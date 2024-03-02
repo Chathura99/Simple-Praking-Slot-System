@@ -28,6 +28,7 @@
                                 <li><a href="admin.php">Admin Dashboard</a></li>
 
                 <li><a href="parking.php">Book Parking</a></li>
+                <li><a href="history.php">Parking History</a></li>
                 <li><a href="logout.php">Logout</a></li>
                 <?php
             } ?>

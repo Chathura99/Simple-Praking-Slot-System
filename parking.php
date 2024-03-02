@@ -49,6 +49,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $booking_id_result = $booking_id_query->fetch_assoc();
         $booking_id = $booking_id_result['booking_id'];
 
+        // Add record to parking history
+        $insert_history_sql = "INSERT INTO parking_history (user_id, slot_id, booking_time, payment_status) 
+    VALUES ('{$_SESSION['user_id']}', '$slot_id', '$booking_time', 'paid')";
+        $conn->query($insert_history_sql);
+
         // Clear form fields
         $_POST = array();
 
@@ -75,6 +80,7 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,6 +88,7 @@ $conn->close();
     <link rel="stylesheet" href="header.css">
     <title>Parking Booking - Smart Parking</title>
 </head>
+
 <body>
     <h1>Parking Booking</h1>
 
@@ -120,4 +127,5 @@ $conn->close();
 
     <script src="script.js"></script>
 </body>
+
 </html>
